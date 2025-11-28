@@ -1,121 +1,239 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Fabio RSS</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Portfólio - Fabio</title>
+<style>
+  :root{
+    --primary:#0d47a1;
+    --muted:#6b7280;
+    --card-bg:#ffffff;
+    --page-bg:#f4f6f8;
+    --radius:12px;
+    --max-width:1000px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    background:var(--page-bg);
+    color:#0b1220;
+    -webkit-font-smoothing:antialiased;
+  }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+  /* Header / Nav */
+  header.site-header{
+    background:linear-gradient(90deg,var(--primary),#154ea1);
+    color:white;
+    padding:36px 20px;
+    text-align:center;
+  }
+  header.site-header h1{margin:0;font-size:28px;letter-spacing:0.4px}
+  header.site-header p{margin:6px 0 0;color:rgba(255,255,255,0.95)}
 
-        header {
-            background-color: #0d47a1;
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
+  nav.topnav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(255,255,255,0.98);
+    border-bottom:1px solid #e6e9ef;
+    display:flex; gap:10px; align-items:center;
+    justify-content:center; padding:10px 12px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.02);
+  }
+  nav.topnav a{
+    color:var(--primary); text-decoration:none; padding:8px 12px; border-radius:8px;
+    font-weight:600; font-size:14px;
+  }
+  nav.topnav a.active, nav.topnav a:hover{ background:rgba(13,71,161,0.06); }
 
-        section {
-            width: 80%;
-            margin: 20px auto;
-            background-color: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
+  /* Layout */
+  main.container{ max-width:var(--max-width); margin:28px auto; padding:0 16px; }
 
-        h2 {
-            color: #0d47a1;
-        }
+  .card{
+    background:var(--card-bg); border-radius:var(--radius); padding:22px;
+    box-shadow:0 8px 20px rgba(16,24,40,0.04); margin-bottom:18px;
+  }
+  h2.section-title{ color:var(--primary); margin:0 0 12px; font-size:20px; }
+  .lead{ color:var(--muted); margin:0 0 12px; line-height:1.6 }
 
-        ul {
-            line-height: 1.8;
-        }
+  /* two-column */
+  .grid{ display:grid; grid-template-columns: 1fr 350px; gap:18px; align-items:start; }
+  @media(max-width:900px){ .grid{ grid-template-columns:1fr; } }
 
-        footer {
-            background-color: #0d47a1;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            margin-top: 30px;
-        }
-    </style>
+  ul.list{ margin:10px 0 0; padding-left:18px; color:#111827 }
+  ul.list li{ margin:8px 0; line-height:1.6 }
+
+  /* badges */
+  .badges{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px }
+  .badge{ background:#eef6ff; color:var(--primary); padding:7px 10px; border-radius:999px; font-weight:600; font-size:13px; }
+
+  /* projects */
+  .project{ border-left:4px solid rgba(13,71,161,0.12); padding:12px; border-radius:8px; background:#fcfdff; margin-bottom:10px; }
+  .project h4{ margin:0 0 6px; font-size:16px }
+  .project p{ margin:0; color:var(--muted); font-size:14px }
+
+  /* contact */
+  .contact-list p{ margin:8px 0; color:#0b1220; font-weight:600 }
+  .small{ font-size:13px; color:var(--muted) }
+
+  footer.page-footer{ text-align:center; color:var(--muted); padding:20px 10px; margin-top:12px; }
+
+  /* small helpers */
+  .muted{ color:var(--muted); font-size:14px }
+  .sep{ height:1px; background:#eef1f6; margin:14px 0; border-radius:4px }
+</style>
 </head>
-
 <body>
 
-<header>
-    <h1>Portfólio Profissional - Fabio RSS</h1>
-    <p>Auxiliar de TI | Suporte Técnico | Segurança da Informação</p>
+<header class="site-header">
+  <h1>PORTFÓLIO PROFISSIONAL – TECNOLOGIA DA INFORMAÇÃO</h1>
+  <p>Fabio [Sobrenome] — Auxiliar de TI | Segurança da Informação (em formação)</p>
 </header>
 
-<section>
-    <h2>Sobre mim</h2>
-    <p>
-        Sou apaixonado por tecnologia e estou iniciando minha carreira na área de TI.
-        Tenho experiência prática em suporte técnico, manutenção de computadores,
-        redes e sistemas Linux. Atualmente estudo segurança da informação e realizo
-        laboratórios práticos utilizando Kali Linux e Metasploitable2.
-    </p>
-</section>
+<nav class="topnav" aria-label="Navegação principal">
+  <a href="#sobre" class="active">Sobre</a>
+  <a href="#habilidades">Habilidades</a>
+  <a href="#projetos">Projetos</a>
+  <a href="#cursos">Cursos</a>
+  <a href="#experiencia">Experiência</a>
+  <a href="#contato">Contato</a>
+</nav>
 
-<section>
-    <h2>Habilidades Técnicas</h2>
-    <ul>
-        <li>Montagem e manutenção de computadores</li>
-        <li>Formatação e instalação de sistemas operacionais</li>
-        <li>Linux (Ubuntu e Kali Linux)</li>
-        <li>Redes — IP, DNS, DHCP e comandos básicos</li>
-        <li>Virtualização — VirtualBox</li>
-        <li>Ferramentas de segurança — Nmap (iniciando)</li>
-        <li>Pacote Office</li>
-    </ul>
-</section>
+<main class="container">
 
-<section>
-    <h2>Projetos & Laboratórios</h2>
+  <!-- Sobre -->
+  <section id="sobre" class="card">
+    <h2 class="section-title">📌 Sobre mim</h2>
+    <p class="lead">Sou apaixonado por tecnologia e estou me desenvolvendo nas áreas de suporte técnico, redes e segurança da informação. Tenho mais de 10 anos de experiência no setor operacional, o que me desenvolveu disciplina, organização, responsabilidade e habilidade em lidar com rotinas e processos. Busco minha primeira oportunidade formal em TI, com foco em suporte e segurança da informação.</p>
+  </section>
 
-    <h3>🔹 Laboratório de Segurança – Kali Linux + Metasploitable2</h3>
-    <p>
-        Criei um ambiente virtual para estudar segurança ofensiva e defensiva.
-        Aprendi a realizar varreduras de rede, identificação de portas e análise de vulnerabilidades.
-    </p>
+  <div class="grid">
+    <!-- Coluna principal -->
+    <div>
+      <!-- Habilidades -->
+      <section id="habilidades" class="card">
+        <h2 class="section-title">📘 Conhecimentos Práticos em TI</h2>
 
-    <h3>🔹 Manutenção de PCs (Autônomo)</h3>
-    <p>
-        Troca de HDD por SSD, upgrade de memória RAM, limpeza interna, instalação e configuração de Windows.
-    </p>
+        <h3 style="margin:10px 0 6px">🖥️ Suporte Técnico e Manutenção</h3>
+        <ul class="list">
+          <li>Montagem e desmontagem de computadores</li>
+          <li>Limpeza e manutenção preventiva</li>
+          <li>Instalação e configuração de sistemas operacionais (Windows e Linux)</li>
+          <li>Troca de HD para SSD e clonagem de sistemas</li>
+          <li>Upgrade de memória RAM</li>
+          <li>Instalação e configuração de periféricos</li>
+          <li>Solução de problemas básicos de hardware e software</li>
+          <li>Backup e organização de arquivos</li>
+        </ul>
 
-    <h3>🔹 Configuração de Rede Doméstica</h3>
-    <p>
-        Configuração de roteadores, criação de redes Wi-Fi, ajustes de IP e análise básica de conectividade.
-    </p>
-</section>
+        <div class="sep"></div>
 
-<section>
-    <h2>Cursos & Estudos</h2>
-    <ul>
-        <li>Segurança da Informação — estudos contínuos</li>
-        <li>Fundamentos de Linux</li>
-        <li>Redes de Computadores (básico)</li>
-        <li>Introdução ao Nmap</li>
-    </ul>
-</section>
+        <h3 style="margin:10px 0 6px">🐧 Sistemas Operacionais — Windows e Linux</h3>
+        <ul class="list">
+          <li>Experiência com Windows 10/11</li>
+          <li>Uso do Linux (Ubuntu) e laboratório com Kali Linux</li>
+          <li>Comandos básicos de terminal, criação de usuários e permissões</li>
+          <li>Instalação de pacotes e atualizações</li>
+          <li>Noções de segurança e boas práticas no Linux</li>
+        </ul>
 
-<section>
-    <h2>Contato</h2>
-    <p><strong>Email:</strong> fabiodev@example.com<br>
-       <strong>GitHub:</strong> github.com/fabiorss36-glitch</p>
-</section>
+        <div class="sep"></div>
 
-<footer>
-    <p>© 2025 Fabio RSS — Portfólio Profissional</p>
-</footer>
+        <h3 style="margin:10px 0 6px">🌐 Redes de Computadores</h3>
+        <ul class="list">
+          <li>Conceitos: IP, máscara, gateway, DNS</li>
+          <li>Testes de conectividade (ping, traceroute)</li>
+          <li>Cabeamento, roteadores e switches — configurações simples</li>
+          <li>Diagnóstico básico de problemas de rede</li>
+          <li>Introdução ao Nmap para mapeamento/varreduras</li>
+        </ul>
+
+        <div class="sep"></div>
+
+        <h3 style="margin:10px 0 6px">🔐 Segurança da Informação (em formação)</h3>
+        <ul class="list">
+          <li>Prática em laboratório com Kali Linux e Metasploitable2</li>
+          <li>Testes básicos de vulnerabilidades em ambiente controlado</li>
+          <li>Noções de pentest e princípios de segurança</li>
+          <li>Entendimento sobre ataques comuns e portas/serviços vulneráveis</li>
+          <li>Boas práticas para usuários e conceitos iniciais de monitoramento</li>
+        </ul>
+      </section>
+
+      <!-- Projetos -->
+      <section id="projetos" class="card">
+        <h2 class="section-title">🧪 Laboratórios e Projetos Práticos</h2>
+
+        <div class="project">
+          <h4>🔧 Laboratório Virtual — Kali Linux + Metasploitable2</h4>
+          <p>Ambiente montado para testes práticos; executo scans com Nmap, identifico serviços e estudo vulnerabilidades em ambiente controlado.</p>
+        </div>
+
+        <div class="project">
+          <h4>💻 Projetos Práticos</h4>
+          <p>Upgrade completo de PCs (limpeza, troca de HDD → SSD, instalação de SO); configuração de dual-boot; organização de rede doméstica; criação de usuários e permissões no Linux; testes de segurança em VMs.</p>
+        </div>
+
+        <div style="margin-top:10px" class="small">Posso transformar esses projetos em “cases técnicos” com detalhes dos passos e resultados — quer que eu faça isso?</div>
+      </section>
+
+      <!-- Cursos -->
+      <section id="cursos" class="card">
+        <h2 class="section-title">📚 Cursos & Certificações</h2>
+        <p class="muted">(Substitua pelos cursos que você concluiu — posso ajudar a completar)</p>
+        <ul class="list">
+          <li>Curso de Segurança da Informação — [Plataforma]</li>
+          <li>Curso de Fundamentos de Redes — [Plataforma]</li>
+          <li>Introdução ao Linux — [Plataforma]</li>
+          <li>Conceitos de Arduino e Eletrônica — introdutório</li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Coluna lateral -->
+    <aside>
+      <section class="card">
+        <h2 class="section-title">🛠️ Ferramentas & Tecnologias</h2>
+        <div class="badges" style="margin-top:8px">
+          <div class="badge">Windows</div>
+          <div class="badge">Ubuntu</div>
+          <div class="badge">Kali Linux</div>
+          <div class="badge">Nmap</div>
+          <div class="badge">VirtualBox / VMware</div>
+          <div class="badge">Office</div>
+        </div>
+      </section>
+
+      <section id="experiencia" class="card">
+        <h2 class="section-title">💼 Experiência Profissional</h2>
+        <p class="small">Experiência operacional que fortalece seu perfil</p>
+        <ul class="list">
+          <li>10 anos de experiência em produção</li>
+          <li>Organização de estoque e logística</li>
+          <li>Operador de empilhadeira (gás e elétrica)</li>
+          <li>Treinamento de novos colaboradores</li>
+          <li>Disciplina, foco e boa resolução de problemas</li>
+        </ul>
+      </section>
+
+      <section id="contato" class="card">
+        <h2 class="section-title">📞 Contato</h2>
+        <div class="contact-list">
+          <p>Fabio Roerto da Silva</p>
+          <p class="muted">Telefone: (11)95364-4654</p>
+          <p class="muted">E-mail: fabiorss36@gmail.com</p>
+          <div style="height:12px"></div>
+          <div class="small">GitHub: <a href="https://github.com/fabiorss36-glitch" target="_blank" rel="noopener" style="color:var(--primary);text-decoration:none">github.com/fabiorss36-glitch</a></div>
+          <div class="small" style="margin-top:6px">São Paulo/SP</div>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <footer class="page-footer">
+    © 2025 Fabio — Portfólio Profissional · Desenvolvido para candidaturas de Auxiliar de TI
+  </footer>
+</main>
 
 </body>
 </html>
